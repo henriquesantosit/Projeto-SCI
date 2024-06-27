@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: DockerFile
+    container_name: dewtech-app
+    restart: always
+    working_dir: /var/www/
+    volumes:
+      - ../src:/var/www/
+
+  nginx:
+    image: nginx:1.25.1-alpine-slim
+    container_name: dewtech-nginx
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ../src:/var/www
+      - ./nginx:/etc/nginx/conf.d
+
+
+  mysql:
+    image: mysql:latest
+    container_name: servidor_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: senha
+      MYSQL_DATABASE: minha_base_de_dados
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./src/db_init.sql:/docker-entrypoint-initdb.d/db_init.sql
+
+  php:
+    image: php:7.4-fpm
+    container_name: servidor_php
+    restart: always
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - mysql
+
+volumes:
+  db_data:

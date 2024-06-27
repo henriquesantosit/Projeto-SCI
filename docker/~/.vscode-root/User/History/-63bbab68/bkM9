@@ -1,0 +1,30 @@
+FROM php:8.2-fpm
+
+RUN apt-get update && apt-get install -y \
+    git   \
+    curl  \
+    zip \
+    unzip
+
+WORKDIR /var/www
+
+# Use a imagem oficial do PHP com FPM (FastCGI Process Manager)
+FROM php:7.4-fpm
+
+# Instalação de dependências necessárias
+RUN apt-get update \
+    && apt-get install -y \
+       libzip-dev \
+       zip \
+       unzip \
+       default-mysql-client \
+    && docker-php-ext-install mysqli pdo_mysql zip
+
+# Copia o código fonte da aplicação para o diretório de trabalho no contêiner
+COPY ./ /var/www/
+
+# Define o diretório de trabalho
+WORKDIR /var/www/
+
+# Comando padrão a ser executado quando o contêiner iniciar
+CMD ["php-fpm"]

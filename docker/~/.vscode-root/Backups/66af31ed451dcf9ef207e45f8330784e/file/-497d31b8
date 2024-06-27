@@ -1,0 +1,32 @@
+file:///root/projeto-sci/src/public/index.php {"mtime":1719444418492,"ctime":1719442783757,"size":29,"etag":"3cjjlik8gt","orphaned":false,"typeId":""}
+
+
+<?php
+
+echo "Olá, mundo!";
+$servername = "mysql";
+$username = "sci";
+$password = "sci";
+$dbname = "test_db";
+
+// Criar conexão
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexão
+if ($conn->connect_error) {
+    die("Conexão falhou: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, name FROM users";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Nome: " . $row["name"]. "<br>";
+    }
+} else {
+    echo "0 resultados";
+}
+
+$conn->close();
+?>
