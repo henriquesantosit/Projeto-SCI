@@ -1,7 +1,6 @@
-file:///root/projeto-sci/src/public/index2.php {"mtime":1719492626930,"ctime":1719490641351,"size":875,"etag":"3cjm2na1es7","orphaned":false,"typeId":""}
 <?php
 
-echo "Olá, mundo!";?>
+echo "Falae, mundo!";?>
 
 <?php
 $servername = "mysql"; 

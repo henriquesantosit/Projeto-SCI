@@ -1720,9 +1720,9 @@
             "folder": "file:///root/projeto-sci",
             "backupPath": "/root/projeto-sci/docker/~/.vscode-root/Backups/66af31ed451dcf9ef207e45f8330784e",
             "uiState": {
-                "mode": 0,
-                "x": 171,
-                "y": 69,
+                "mode": 1,
+                "x": 1502,
+                "y": 167,
                 "width": 1024,
                 "height": 699
             }

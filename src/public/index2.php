@@ -1,25 +1,25 @@
 <?php
 
-echo "Olá, mundo!";?>
+echo "Falae, mundo!";?>
 
 <?php
-$servername = "mysql"; // Nome do serviço do contêiner MySQL no Docker Compose
+$servername = "mysql"; 
 $username = "root";
 $password = "senha";
 $dbname = "scidb";
 
-// Cria a conexão
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica a conexão
+
 if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
 }
 
 echo "Conexão ao MySQL realizada com sucesso!";
 
-// Query para buscar algo no banco de dados
-$sql = "SELECT * FROM sua_tabela"; // Substitua pela sua tabela
+
+$sql = "SELECT * FROM sua_tabela"; 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
