@@ -5,7 +5,7 @@ services:
     build:
       context: ./
       dockerfile: DockerFile
-    container_name: dewtech-app
+    container_name: servidorphp
     restart: always
     working_dir: /var/www/
     volumes:
@@ -13,7 +13,7 @@ services:
 
   nginx:
     image: nginx:1.25.1-alpine-slim
-    container_name: dewtech-nginx
+    container_name: servidornginx
     restart: always
     ports:
       - "8080:80"
