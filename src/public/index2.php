@@ -1,6 +1,6 @@
 <?php
 
-echo "Falae, mundo!";?>
+echo "Olá, mundo!";?>
 
 <?php
 $servername = "mysql"; 
